@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UploadController;
+use App\Http\Controllers\SmartphoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/smartphone', [SmartphoneController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//Fortify
+
+
+// welcome.blade.phpでのアップロード演習のためのルーティング
+Route::post('/smartphone', [UploadController::class, 'store']);
+Route::resource('/smartphone/upload', UploadController::class);
+
